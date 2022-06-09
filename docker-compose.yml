@@ -2,7 +2,8 @@ version: "3.7"
 services:
   db:
     image: mysql
-    container_image: mysql-container
+    container_name: mysql-container
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: programadorabordo
     volumes:
@@ -26,7 +27,7 @@ services:
     volumes:
       - ./website:/var/www/html
     ports:
-      -"8888:80"
+      - "8888:80"
     depends_on:
       - db
       - api
